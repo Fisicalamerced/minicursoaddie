@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de Simuladores para la Enseñanza de la Cinemática: Modelo ADDIE</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind gray-50 */
+            color: #334155; /* Tailwind slate-700 */
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section-heading {
+            border-bottom: 2px solid #cbd5e1; /* Tailwind slate-300 */
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            display: inline-flex; /* Use flex to align icon and text */
+            align-items: center;
+            gap: 1rem; /* Space between icon and text */
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 0.75rem; /* Space between rows */
+        }
+        th, td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-radius: 0.5rem; /* Rounded corners for cells */
+        }
+        th {
+            background-color: #e2e8f0; /* Tailwind gray-200 */
+            color: #1e293b; /* Tailwind slate-800 */
+            font-weight: 600;
+        }
+        td {
+            background-color: #ffffff; /* White background for data cells */
+            border: 1px solid #e2e8f0; /* Light border */
+        }
+        tr:hover td {
+            background-color: #f0f4f8; /* Subtle hover effect on rows */
+        }
+        /* Custom fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-gray-900 text-white py-8 shadow-lg">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+                Manejo de Simuladores para la Enseñanza de la Cinemática
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-light opacity-80 mb-4">
+                Empleando el Modelo ADDIE
+            </h2>
+            <!-- List of Participants -->
+            <ul class="text-lg font-light opacity-90 space-y-1">
+                <li>Edith Cecilia Fernández Pérez (148551)</li>
+                <li>Maximiliano Pérez Gil (148560)</li>
+                <li>Mónica Gaitán Erazo (148447)</li>
+                <li>Sergio David López Gualdron (148464)</li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky-nav shadow-md py-4">
+        <div class="container mx-auto px-6 flex justify-center space-x-4 md:space-x-8">
+            <a href="#analisis" class="nav-link px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold text-sm md:text-base hover:bg-blue-700">Análisis</a>
+            <a href="#diseno" class="nav-link px-4 py-2 rounded-lg bg-green-600 text-white font-semibold text-sm md:text-base hover:bg-green-700">Diseño</a>
+            <a href="#desarrollo" class="nav-link px-4 py-2 rounded-lg bg-yellow-600 text-white font-semibold text-sm md:text-base hover:bg-yellow-700">Desarrollo</a>
+            <a href="#implementacion" class="nav-link px-4 py-2 rounded-lg bg-red-600 text-white font-semibold text-sm md:text-base hover:bg-red-700">Implementación</a>
+            <a href="#evaluacion" class="nav-link px-4 py-2 rounded-lg bg-purple-600 text-white font-semibold text-sm md:text-base hover:bg-purple-700">Evaluación</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-12">
+        <!-- Introduction -->
+        <section class="mb-16 animate-fadeIn" style="animation-delay: 0.1s;">
+            <p class="text-lg text-center leading-relaxed">
+                Este documento detalla la propuesta para diseñar un minicurso innovador sobre el manejo de simuladores en la enseñanza de la cinemática. Se ha adoptado el riguroso **modelo ADDIE**, un enfoque sistemático que, a través de sus cinco fases interactivas y cíclicas (Análisis, Diseño, Desarrollo, Implementación y Evaluación), asegura la creación de una experiencia educativa efectiva, adaptable y de calidad para entornos digitales.             </p>
+            <div class="flex justify-center mt-8">
+                <img src="https://www.agorabierta.com/wp-content/uploads/2020/06/Ilustracio%CC%81n_sin_ti%CC%81tulo-19.jpg" alt="Diagrama del Modelo ADDIE" class="rounded-xl shadow-lg w-full md:w-3/4 lg:w-1/2">
+            </div>
+        </section>
+
+        <!-- ANÁLISIS Section -->
+        <section id="analisis" class="mb-16 py-8 animate-fadeIn" style="animation-delay: 0.3s;">
+            <h2 class="text-3xl md:text-4xl font-bold section-heading mb-8"><i class="fas fa-search text-blue-600"></i>1. Análisis</h2>
+            <div class="flex flex-col md:flex-row items-start gap-8 mb-8">
+                <p class="text-lg flex-1">
+                    Esta fase es el pilar inicial, enfocada en la identificación de necesidades educativas y tecnológicas, el contexto del problema, la solución propuesta y los recursos disponibles (Loján Carrión, et al., 2005). Es un diagnóstico exhaustivo que sienta las bases para el diseño del minicurso. 
+                </p>
+                <div class="md:w-1/3 flex-shrink-0">
+                    <img src="https://www.grupoeducar.cl/wp-content/uploads/2018/09/Datoseducativossobreelescritoriodeunprofesor.jpeg" alt="Estudiantes Analizando Datos en Pantallas" class="rounded-xl shadow-lg w-full">
+                </div>
+            </div>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-800">1.1 Identificación de la Problemática</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Aspecto</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Conceptos Abstractos</td>
+                                <td>La cinemática (desplazamiento, velocidad, aceleración) a menudo son abstractos y difíciles de visualizar para los estudiantes.</td>
+                            </tr>
+                            <tr>
+                                <td>Solución Propuesta</td>
+                                <td>Los simuladores ofrecen una oportunidad para hacer los conceptos más concretos y aplicables.</td>
+                            </tr>
+                            <tr>
+                                <td>Habilidades Digitales Estudiantiles</td>
+                                <td>Necesidad de determinar el nivel actual de habilidades digitales de los estudiantes, específicamente en el uso de herramientas tecnológicas para el aprendizaje, y la necesidad de fortalecerlas.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-800">1.2 Necesidades del Personal Docente</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Aspecto</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Competencias Digitales</td>
+                                <td>Diagnóstico de las competencias digitales de los docentes de física o ciencias naturales para la enseñanza, ya que se ha identificado la necesidad de fortalecer las habilidades digitales en otros contextos educativos (Violini, 2016).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-800">1.3 Identificación de la Población Objetivo</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Aspecto</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Destinatarios</td>
+                                <td>Estudiantes que necesitan reforzar sus conocimientos en cinemática y adquirir destrezas en el manejo de simuladores.</td>
+                            </tr>
+                            <tr>
+                                <td>Conocimientos Previos</td>
+                                <td>Análisis de su nivel de conocimientos previos en cinemática.</td>
+                            </tr>
+                            <tr>
+                                <td>Competencias Digitales Generales</td>
+                                <td>Análisis de sus competencias digitales generales para interactuar en entornos virtuales.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-800">1.4 Análisis del Contexto y Recursos</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Aspecto</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Simuladores</td>
+                                <td>Identificación de los simuladores de cinemática (software o plataformas web) adecuados para los objetivos.</td>
+                            </tr>
+                            <tr>
+                                <td>Acceso a Tecnología</td>
+                                <td>Verificación del acceso de los estudiantes a dispositivos electrónicos (computadoras, tabletas) y a una conexión a internet.</td>
+                            </tr>
+                            <tr>
+                                <td>Plataforma Virtual</td>
+                                <td>Determinación de la plataforma de entorno virtual de aprendizaje (Moodle, Google Classroom) que se utilizará para alojar el curso y sus recursos.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-800">1.5 Instrumentos de Diagnóstico</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Instrumento</th>
+                                <th>Propósito</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cuestionarios</td>
+                                <td>Cuestionarios de conocimientos previos de cinemática.</td>
+                            </tr>
+                            <tr>
+                                <td>Encuestas (Docentes)</td>
+                                <td>Encuestas sobre competencias digitales para la enseñanza y el uso de herramientas tecnológicas en el aprendizaje.</td>
+                            </tr>
+                            <tr>
+                                <td>Encuestas (Estudiantes)</td>
+                                <td>Encuestas sobre la experiencia previa de los estudiantes con entornos virtuales.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- DISEÑO Section -->
+        <section id="diseno" class="mb-16 py-8 animate-fadeIn" style="animation-delay: 0.5s;">
+            <h2 class="text-3xl md:text-4xl font-bold section-heading mb-8"><i class="fas fa-pencil-ruler text-green-600"></i>2.  Diseño</h2>
+            <div class="flex flex-col md:flex-row items-start gap-8 mb-8">
+                <p class="text-lg flex-1">
+                    En esta fase se planifica la acción pedagógica, detallando cómo se enseñarán y aprenderán los contenidos, y se establecen los objetivos y las estrategias de evaluación (Morales González, 2022). Es la hoja de ruta del minicurso.
+                </p>
+                <div class="md:w-1/3 flex-shrink-0">
+                    <img src="https://www.itmadrid.com/wp-content/uploads/2019/02/itmadrid-que-es-el-diseno-instruccional-elearning.png" alt="Diseño Instruccional Digital" class="rounded-xl shadow-lg w-full">
+                </div>
+            </div>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-green-800">2.1 Objetivo General del Mini-curso</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Objetivo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fortalecer la comprensión de los principios de la cinemática y la capacidad de los estudiantes para utilizar simuladores como herramientas efectivas de aprendizaje y análisis.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-green-800">2.2 Objetivos Específicos</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Objetivo Específico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Identificar y definir los conceptos clave de la cinemática, como posición, desplazamiento, velocidad y aceleración, aplicándolos a diversos tipos de movimiento.</td>
+                            </tr>
+                            <tr>
+                                <td>Manejar simuladores interactivos para modelar, visualizar y predecir eficazmente fenómenos cinemáticos.</td>
+                            </tr>
+                            <tr>
+                                <td>Analizar e interpretar datos y gráficos derivados de simulaciones, usándolos para validar hipótesis y resolver problemas complejos.</td>
+                            </tr>
+                            <tr>
+                                <td>Participar activamente en actividades colaborativas, fomentando la reflexión crítica sobre el propio proceso de aprendizaje.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-green-800">2.3 Estructura del Contenido (Modular)</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Módulo</th>
+                                <th>Contenido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Módulo 1</td>
+                                <td>Fundamentos de Cinemática y Exploración de Simuladores: Introducción a la cinemática, navegación e interfaz de simuladores básicos.</td>
+                            </tr>
+                            <tr>
+                                <td>Módulo 2</td>
+                                <td>Movimiento Rectilíneo Uniforme (MRU): Conceptos, ecuaciones, simulación de movimiento constante, análisis de gráficos x-t y v-t.</td>
+                            </tr>
+                            <tr>
+                                <td>Módulo 3</td>
+                                <td>Movimiento Rectilíneo Uniformemente Acelerado (MRUA): Conceptos, ecuaciones, simulación de movimiento acelerado, análisis de gráficos x-t, v-t y a-t.</td>
+                            </tr>
+                            <tr>
+                                <td>Módulo 4</td>
+                                <td>Movimiento Parabólico: Conceptos, ecuaciones, simulación de proyectiles, análisis de trayectoria y factores que la afectan.</td>
+                            </tr>
+                            <tr>
+                                <td>Módulo 5</td>
+                                <td>Aplicaciones y Mini-Proyectos: Resolución de problemas complejos de la vida real mediante simuladores, y diseño de una pequeña simulación o experimento virtual.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-green-800">2.4 Estrategias Didácticas y Metodologías Activas</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Estrategia</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Aprendizaje Basado en Problemas (ABP)</td>
+                                <td>Se presentarán escenarios problemáticos de cinemática que los estudiantes deberán resolver utilizando los simuladores para experimentar, probar y observar los resultados.</td>
+                            </tr>
+                            <tr>
+                                <td>Aprendizaje Colaborativo</td>
+                                <td>Se diseñarán actividades grupales donde los estudiantes explorarán los simuladores, discutirán sus hallazgos y construirán soluciones conjuntamente, fomentando la interacción y el aprendizaje entre pares.</td>
+                            </tr>
+                            <tr>
+                                <td>Gamificación</td>
+                                <td>Se pueden incorporar elementos como insignias por completar simulaciones, puntos por la precisión en los experimentos virtuales, o tablas de clasificación para fomentar la motivación y el compromiso (Loján Carrión, et al., 2025).</td>
+                            </tr>
+                            <tr>
+                                <td>Aprendizaje Ubicuo</td>
+                                <td>El diseño será flexible permitiendo a los estudiantes acceder a los contenidos y simuladores en cualquier momento y lugar.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-green-800">2.5 Diseño de la Evaluación</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Tipo de Evaluación</th>
+                                <th>Estrategias</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Evaluación Formativa</td>
+                                <td>Incluirá cuestionarios cortos después de cada actividad en el simulador, autoevaluaciones y coevaluaciones de las actividades colaborativas, y participación activa en foros de discusión para retroalimentación constante.</td>
+                            </tr>
+                            <tr>
+                                <td>Evaluación Sumativa</td>
+                                <td>Se realizará un mini-proyecto final donde los estudiantes aplicarán los conocimientos de cinemática y demostrarán su habilidad en el manejo de simuladores para resolver un problema complejo o diseñar un experimento simulado.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESARROLLO Section -->
+        <section id="desarrollo" class="mb-16 py-8 animate-fadeIn" style="animation-delay: 0.7s;">
+            <h2 class="text-3xl md:text-4xl font-bold section-heading mb-8"><i class="fas fa-flask text-yellow-600"></i> 3. Desarrollo</h2>
+            <div class="flex flex-col md:flex-row items-start gap-8 mb-8">
+                <p class="text-lg flex-1">
+                    Esta fase implica la creación y validación de todos los materiales y recursos de aprendizaje necesarios (Loján Carrión, et al., 2025). Aquí es donde el diseño toma forma concreta. 
+                </p>
+                <div class="md:w-1/3 flex-shrink-0">
+                    <img src="https://juammonsalvedigital.com/wp-content/uploads/2020/10/creativosdelhoroscopo.jpg" alt="Desarrollo de Contenido Multimedia" class="rounded-xl shadow-lg w-full">
+                </div>
+            </div>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-yellow-800">3.1 Creación de Materiales y Recursos</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Recurso</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Contenidos Teóricos</td>
+                                <td>Elaboración de módulos con explicaciones claras de los conceptos de cinemática, enriquecidos con imágenes, gráficos y ejemplos contextualizados con el uso de los simuladores.</td>
+                            </tr>
+                            <tr>
+                                <td>Tutoriales de Simuladores</td>
+                                <td>Producción de videos instructivos y guías paso a paso para el manejo de cada simulador específico, demostrando cómo recrear diferentes situaciones cinemáticas.</td>
+                            </tr>
+                            <tr>
+                                <td>Ejercicios Interactivos</td>
+                                <td>Diseño de actividades directamente dentro de los simuladores que guíen al estudiante en la exploración de variables y la observación de resultados, fomentando la construcción de conocimiento.</td>
+                            </tr>
+                            <tr>
+                                <td>Recursos Multimedia Complementarios</td>
+                                <td>Inclusión de videos explicativos de conceptos complejos, animaciones y enlaces a recursos externos relevantes (artículos científicos, videos educativos).</td>
+                            </tr>
+                            <tr>
+                                <td>Foros de Discusión</td>
+                                <td>Configuración de espacios para que los estudiantes planteen preguntas, resuelvan dudas entre compañeros y discutan los resultados de las simulaciones.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-yellow-800">3.2 Validación de Recursos</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Proceso</th>
+                                <th>Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Revisión por Docentes</td>
+                                <td>Los materiales y el diseño instruccional serán revisados por docentes de física y tecnología educativa para asegurar su pertinencia, rigor científico y calidad pedagógica.</td>
+                            </tr>
+                            <tr>
+                                <td>Pruebas Piloto</td>
+                                <td>Se realizarán pruebas piloto con un grupo focalizado de estudiantes para obtener retroalimentación sobre la claridad de los contenidos, la usabilidad de los simuladores y la efectividad de las actividades, ajustando el diseño según sea necesario.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPLEMENTACIÓN Section -->
+        <section id="implementacion" class="mb-16 py-8 animate-fadeIn" style="animation-delay: 0.9s;">
+            <h2 class="text-3xl md:text-4xl font-bold section-heading mb-8"><i class="fas fa-rocket text-red-600"></i> 4. Implementación</h2>
+            <div class="flex flex-col md:flex-row items-start gap-8 mb-8">
+                <p class="text-lg flex-1">
+                    En esta fase, se pone en práctica el diseño, facilitando la construcción de aprendizaje por parte de los estudiantes (Morales González, 2022). 
+                </p>
+                <div class="md:w-1/3 flex-shrink-0">
+                    <img src="https://static.wikia.nocookie.net/desarrollo_de_ambientes_viruales/images/c/c3/Kathy.jpg/revision/latest?cb=20200719020427&path-prefix=es" alt="Estudiantes interactuando con simuladores en un entorno virtual" class="rounded-xl shadow-lg w-full">
+                </div>
+            </div>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-red-800">4.1 Plataforma y Desarrollo del Curso</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Aspecto</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Plataforma de Despliegue</td>
+                                <td>El mini-curso se desplegará en el entorno virtual de aprendizaje seleccionado (Moodle, Google Classroom), que permitirá a los estudiantes acceder a todos los contenidos, actividades y herramientas de evaluación.</td>
+                            </tr>
+                            <tr>
+                                <td>Inicio de Módulos</td>
+                                <td>Cada módulo iniciará con una introducción teórica, seguida de actividades prácticas que involucren la exploración y manipulación de los simuladores.</td>
+                            </tr>
+                            <tr>
+                                <td>Exploración Autónoma</td>
+                                <td>Se fomentará la exploración autónoma de los simuladores por parte de los estudiantes, permitiéndoles experimentar a su propio ritmo.</td>
+                            </tr>
+                            <tr>
+                                <td>Actividades Colaborativas</td>
+                                <td>Las actividades colaborativas se llevarán a cabo en foros dedicados o salas de trabajo virtuales, promoviendo la interacción entre pares.</td>
+                            </tr>
+                            <tr>
+                                <td>Sesiones Sincrónicas/Asincrónicas</td>
+                                <td>Se programarán sesiones sincrónicas (videollamadas) para resolver dudas, discutir ejemplos y presentar mini-proyectos, complementadas con recursos asincrónicos (grabaciones de sesiones, foros de preguntas y respuestas).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-red-800">4.2 Rol del Docente e Imprevistos</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Aspecto</th>
+                                <th>Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rol del Docente</td>
+                                <td>El docente actuará como un facilitador y guía del aprendizaje, resolviendo dudas, moderando discusiones, proporcionando retroalimentación personalizada y estimulando el pensamiento crítico y la exploración. La flexibilidad y adaptabilidad del docente son fundamentales en este momento (Morales González, 2022).</td>
+                            </tr>
+                            <tr>
+                                <td>Imprevistos</td>
+                                <td>Se implementarán estrategias para anticipar y mitigar posibles dificultades de los estudiantes, como la falta de tiempo para realizar la práctica o problemas con el uso de las herramientas.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVALUACIÓN Section -->
+        <section id="evaluacion" class="mb-16 py-8 animate-fadeIn" style="animation-delay: 1.1s;">
+            <h2 class="text-3xl md:text-4xl font-bold section-heading mb-8"><i class="fas fa-chart-line text-purple-600"></i> 5. Evaluación</h2>
+            <div class="flex flex-col md:flex-row items-start gap-8 mb-8">
+                <p class="text-lg flex-1">
+                    Esta fase es medular para evaluar la calidad del proceso y los productos del mini-curso, tanto durante como después de su implementación, permitiendo reajustes y la validación final de la propuesta (Losada & Peña, 2022). 
+                </p>
+                <div class="md:w-1/3 flex-shrink-0">
+                    <img src="https://innovacioneducativa.upc.edu.pe/wp-content/uploads/2020/04/JB_Cabecera_IE-1133x532.png" alt="Análisis de Resultados de Evaluación" class="rounded-xl shadow-lg w-full">
+                </div>
+            </div>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-purple-800">5.1 Evaluación Formativa Continua</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Estrategia</th>
+                                <th>Propósito</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monitoreo del Progreso</td>
+                                <td>Se revisará la participación de los estudiantes en las actividades, foros y el uso de los simuladores.</td>
+                            </tr>
+                            <tr>
+                                <td>Encuestas de Satisfacción por Módulo</td>
+                                <td>Se recopilará la percepción de los estudiantes sobre la claridad de los contenidos, la utilidad de los recursos y la calidad del entorno virtual.</td>
+                            </tr>
+                            <tr>
+                                <td>Cuestionarios de Retroalimentación</td>
+                                <td>Se aplicarán preguntas específicas sobre la eficacia de los simuladores, la comprensión de las explicaciones y el nivel de dificultad de las actividades.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-purple-800">5.2 Evaluación Sumativa Final</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Tipo de Evaluación</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Proyecto de Aplicación</td>
+                                <td>Los estudiantes presentarán un proyecto donde demuestren su capacidad para utilizar los simuladores en la resolución de un problema complejo de cinemática o en el diseño de una situación simulada, evidenciando el dominio de conceptos y herramientas.</td>
+                            </tr>
+                            <tr>
+                                <td>Evaluación Final</td>
+                                <td>Evaluación de los conocimientos teóricos adquiridos y la capacidad de analizar e interpretar resultados de simulaciones.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-purple-800">5.3 Análisis y Ajuste</h3>
+                    <table class="shadow-md rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="rounded-tl-xl">Acción</th>
+                                <th>Resultado/Propósito</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Análisis de Resultados</td>
+                                <td>Se analizarán los resultados de las evaluaciones formativas y sumativas para identificar problemas emergentes y definir las adecuaciones necesarias.</td>
+                            </tr>
+                            <tr>
+                                <td>Retroalimentación de Estudiantes</td>
+                                <td>La retroalimentación de los estudiantes es esencial para mejorar los contenidos y recursos, garantizando su relevancia y contextualización para la disciplina</td>
+                            </tr>
+                            <tr>
+                                <td>Implementación de Ajustes</td>
+                                <td>Los ajustes y mejoras al mini-curso se implementarán basándose en estos hallazgos, lo que permitirá la validación del diseño tecnoinstruccional</td>
+                            </tr>
+                            <tr>
+                                <td>Asegurar Rol Activo</td>
+                                <td>El proceso de evaluación busca asegurar que el diseño impulse un rol más activo del estudiante y guíe eficazmente la construcción del conocimiento en un entorno interactivo.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Referencias Section -->
+        <section id="referencias" class="py-8 animate-fadeIn" style="animation-delay: 1.3s;">
+            <h2 class="text-3xl md:text-4xl font-bold section-heading mb-8">Referencias</h2>
+            <ul class="list-disc list-inside space-y-4 text-lg">
+                <li>Morales González, B. (2022). Diseño instruccional según el modelo ADDIE en la formación inicial docente. *Apertura (Guadalajara, Jal.)*, *14*(1), 80–95. <a href="https://doi.org/10.32870/ap.v14n1.2160" target="_blank" class="text-blue-600 hover:underline">https://doi.org/10.32870/ap.v14n1.2160</a></li>
+                <li>Losada Cárdenas, M. Á., & Peña Estrada, C. C. (2022). Diseño instruccional: fortalecimiento de las competencias digitales a partir del modelo Addie. *RIDE. Revista Iberoamericana para la Investigación y el Desarrollo Educativo*, *13*(25), e038. <a href="https://doi.org/10.23913/ride.v13i25.1309" target="_blank" class="text-blue-600 hover:underline">https://doi.org/10.23913/ride.v13i25.1309</a></li>
+                <li>Loján Carrión, M. D. C., Zambrano Solís, M. J., Torres Torres, O. L., Chávez Colcha, A. P., & Villarreal Morales, N. J. (2025). Modelo pedagógico mediado por TIC integrando ADDIE y gamificación: Una propuesta para mejorar la investigación educativa. *Revista Científica UISRAEL*, *12*(1), 185-201. <a href="https://doi.org/10.35290/rcui.v12n1.2025.1438" target="_blank" class="text-blue-600 hover:underline">https://doi.org/10.35290/rcui.v12n1.2025.1438</a></li>
+                <li>Violini, M. L., & Sanz, C. V. (2016, octubre). Herramientas de Autor para la creación de Objetos de Aprendizaje: Estado del arte. *XXII Congreso Argentino de Ciencias de la Computación (CACIC 2016)*. Universidad Nacional de La Plata (UNLP): SeDiCI (Servicio de Difusión de la Creación Intelectual). <a href="https://sedici.unlp.edu.ar/handle/10915/55813" target="_blank" class="text-blue-600 hover:underline">https://sedici.unlp.edu.ar/handle/10915/55813</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-6 text-center text-sm opacity-90">
+        <p>&copy; 2025 Propuesta de Minicurso. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
